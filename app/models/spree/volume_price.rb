@@ -10,7 +10,7 @@ class Spree::VolumePrice < Spree::Base
   validates :discount_type,
             presence: true,
             inclusion: {
-              in: %w(price dollar percent),
+              in: %w(price),
               message: I18n.t(:'activerecord.errors.messages.is_not_included_in_the_list')
             }
   validates :range,
