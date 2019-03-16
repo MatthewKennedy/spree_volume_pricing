@@ -1,9 +1,9 @@
-# Volume Pricing
+currency# Volume Pricing
 
 [![Build Status](https://travis-ci.org/spree-contrib/spree_volume_pricing.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_volume_pricing)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
 
-This fork of the spree_volume_pricing extension reduces the complexity of having 3 different discount types, allowing the user to create price based tables on quantities.
+This fork of the spree_volume_pricing extension that adds multiple currency support by reducing the complexity of having 3 different discount types, allowing the user to create price based tables on quantities in different currencies.
 
 ## Issues
 
@@ -115,12 +115,6 @@ Cart Contents:
       Product                Quantity       Price       Total
       ----------------------------------------------------------------
       Rails T-Shirt          20             17.99       359.80
-
----
-
-## Additional Notes
-
-* The volume price is applied based on the total quantity ordered for a particular variant.  It does not apply different prices for the portion of the quantity that falls within a particular range. Only the one price is used (although this would be an interesting configurable option if someone wanted to write a patch.)
 
 ---
 
