@@ -3,12 +3,10 @@
     <%= error_message_on(f.object, :name) %>
     <%= f.text_field :name, size: 10, class: 'form-control' %>
   </td>
-  <td>
+  <td hidden>
     <%= error_message_on(f.object, :discount_type) %>
     <%= f.select :discount_type, [
         ["#{Spree.t(:total_price)}", 'price'],
-        ["#{Spree.t(:percent_discount)}", 'percent'],
-        ["#{Spree.t(:price_discount)}", 'dollar']
       ], { inlcude_blank: true }, class: 'select2' %>
   </td>
   <td>

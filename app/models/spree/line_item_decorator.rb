@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Spree::LineItem.class_eval do
+
   def update_price
 
     copy_price

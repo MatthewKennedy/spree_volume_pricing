@@ -34,4 +34,5 @@ class Spree::VolumePrice < Spree::Base
   def open_ended?
     OPEN_ENDED =~ range
   end
+
 end

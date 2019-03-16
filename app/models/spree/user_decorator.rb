@@ -7,4 +7,5 @@ Spree.user_class.class_eval do
       return Spree::Role.find_by name: 'user'
     end
   end
+
 end

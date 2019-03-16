@@ -1,5 +1,5 @@
-
 Spree::Variant.class_eval do
+
   has_and_belongs_to_many :volume_price_models
   has_many :volume_prices, -> { order(position: :asc) }, dependent: :destroy
   has_many :model_volume_prices, -> { order(position: :asc) }, class_name: 'Spree::VolumePrice', through: :volume_price_models, source: :volume_prices
@@ -104,4 +104,5 @@ Spree::Variant.class_eval do
         return self.price - (self.price * (1 - volume_price.amount))
       end
     end
+    
 end
