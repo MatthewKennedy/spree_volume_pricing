@@ -1,7 +1,9 @@
+# Spree Volume Pricing With Multiple Currency
+
 [![Build Status](https://travis-ci.org/spree-contrib/spree_volume_pricing.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_volume_pricing)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
 
-This fork of the spree_volume_pricing extension that adds multiple currency support by reducing the complexity of having 3 different discount types, allowing the user to create price based tables on quantities in different currencies.
+This fork of the spree_volume_pricing extension adds multiple currency support by reducing the complexity of having 3 different discount types, this allows the user to create price based tables on quantities in different currencies.
 
 ## Issues
 
