@@ -3,6 +3,15 @@
 [![Build Status](https://travis-ci.org/spree-contrib/spree_volume_pricing.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_volume_pricing)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
 
+This fork of thespree_volume_pricing etension reduces the complexity of having 3 different discount types, allowing the user to create price based tables on quantity.
+
+## Issues
+
+1. When adding to cart while using the store set to a none default currency, the base price is shown correctly, however if you increase the line item quantity to trigger a quantity discount, when coming back down to just 1 item the value from the stores default currency is used not the default value from the current currency.
+1. When in the admin products page adding volume discounts, if you delete one it renders a missing template error.
+
+
+## Original Gem Information
 Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
 
 Each VolumePrice contains the following values:
@@ -41,7 +50,9 @@ Each VolumePrice contains the following values:
   If your server was running, restart it so that it can find the assets properly.
 
 
+  ```ruby
   <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
+  ```
 
 ---
 
