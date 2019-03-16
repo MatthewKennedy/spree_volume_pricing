@@ -31,6 +31,8 @@ Spree::Variant.class_eval do
 
     end
 
+    
+
     # calculates the price based on quantity
     def volume_price(quantity, user=nil, currency=nil)
         compute_volume_price_quantities :volume_price, self.price, quantity, user, currency
