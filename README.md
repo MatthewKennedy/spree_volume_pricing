@@ -8,6 +8,7 @@ This fork of the spree_volume_pricing extension adds multiple currency support b
 ## Issues
 
 1. When adding to cart while using the store set to a none default currency, the base price is shown correctly in the cart line items, however if you increase the line item quantity to trigger a quantity discount, when coming back down to just 1 item the value from the stores default currency is used not the default value from the current currency.
+(variant_decorator.rb line 36 need to input price_in(currency) somehow.)
 
 1. When in the admin products page adding volume discounts, if you delete one it renders a missing template error.
 
