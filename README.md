@@ -20,7 +20,7 @@ Each VolumePrice contains the following values:
 1. **Name:** The human readable representation of the quantity range (Ex. 10-100).  (Optional)
 1. **Range:** The quantity range for which the price is valid (See Below for Examples of Valid Ranges.)
 1. **Amount:** The price of the product if the line item quantity falls within the specified range.
-1. **Currency:** The sores current currency that the line item falls within.
+1. **Currency:** The store current currency that the line item falls within.
 1. **Position:** Integer value for `acts_as_list` (Helps keep the volume prices in a defined order.)
 
 ---
