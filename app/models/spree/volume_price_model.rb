@@ -1,5 +1,5 @@
 class Spree::VolumePriceModel < Spree::Base
-  
+
   has_many :variants
   has_many :volume_prices, -> { order(position: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :volume_prices, allow_destroy: true,
