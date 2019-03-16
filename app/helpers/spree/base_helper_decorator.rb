@@ -17,4 +17,5 @@ Spree::BaseHelper.class_eval do
       currency: Spree::Config[:currency]
     ).to_html
   end
+  
 end
