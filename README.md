@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/spree-contrib/spree_volume_pricing.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_volume_pricing)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
 
-This fork of thespree_volume_pricing etension reduces the complexity of having 3 different discount types, allowing the user to create price based tables on quantity.
+This fork of the spree_volume_pricing extension reduces the complexity of having 3 different discount types, allowing the user to create price based tables on quantities.
 
 ## Issues
 
