@@ -16,15 +16,32 @@ Each VolumePrice contains the following values:
 
 ---
 
-## Install
+## Installation
 
-The extension contains a rails generator that will add the necessary migrations and give you the option to run the migrations, or run them later, perhaps after installing other extensions. Once you have bundled the extension, run the install generator and its ready to use.
+1. Add this extension to your Gemfile with these lines:
 
-      rails generate spree_volume_pricing:install
+  ```ruby
+  gem 'spree_multi_currency', github: 'spree-contrib/spree_multi_currency'
+  gem 'spree_volume_pricing', github: 'matthewkennedy/spree_volume_pricing'
+  ```
 
-Easily add volume pricing display to your product page:
+2. Install the gem using Bundler:
+  ```ruby
+  bundle install
+  ```
 
-      <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
+3. Copy & run migrations
+  ```ruby
+  bundle exec rails g spree_multi_currency:install
+  bundle exec rails g spree_volume_pricing:install
+  ```
+
+4. Restart your server
+
+  If your server was running, restart it so that it can find the assets properly.
+
+
+  <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
 
 ---
 
