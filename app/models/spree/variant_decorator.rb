@@ -31,7 +31,7 @@ Spree::Variant.class_eval do
 
     end
 
-    
+
 
     # calculates the price based on quantity
     def volume_price(quantity, user=nil, currency=nil)
@@ -56,6 +56,7 @@ Spree::Variant.class_eval do
 
 
     def compute_volume_price_quantities type, default_price, quantity, user, currency
+
       volume_prices = self.join_volume_prices user, currency
       if volume_prices.count == 0
         if use_master_variant_volume_pricing?
@@ -69,10 +70,10 @@ Spree::Variant.class_eval do
             return self.send "compute_#{type}".to_sym, volume_price
           end
         end
-
         # No price ranges matched.
         default_price
       end
+
     end
 
     def compute_volume_price volume_price
