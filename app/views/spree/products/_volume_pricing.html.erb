@@ -1,13 +1,14 @@
 <% if product.price > 0 and product.master.volume_prices.present? %>
   <div id="bulk-discount">
-    <h2><%= Spree.t(:bulk_discount) %></h2>
     <table class="table">
-    	<% product.master.volume_prices.each do |v| %>
+      <% avalable_v_discounts = [] %>
+      <% product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
+    	<% avalable_v_discounts.each do |v| %>
 
       	<%= content_tag(:tr) do %>
         	<%= content_tag :td, v.name %>
-        	<%= content_tag :td, Spree::Money.new(v.amount).to_s %>
-        	<%= content_tag(:td, 'Save ' + ' ' +((1.0 - v.amount / product.master.price) * 100.0).round.to_s + '%') %>
+        	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' each' %>
+        	<%= content_tag(:td, 'Save ' + ' ' +((1.0 - v.amount / display_price_decimal) * 100.0).floor.to_s + '%') %>
       	<% end %>
 
     	<% end %>
