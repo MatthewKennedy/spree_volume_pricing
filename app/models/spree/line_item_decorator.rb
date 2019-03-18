@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 Spree::LineItem.class_eval do
 
+  # Check to see if volume discounts are avalable in this currency
   def discounts_are_available
-    if !(self.product.master.volume_prices.count == 0) && (self.variant.volume_price(1000000, self.order.user, self.currency)) <= self.price
+    if !(self.product.master.volume_prices.count == 0) && (self.variant.volume_price((self.quantity + 1), self.order.user, self.currency)) <= self.price
       true
     else
       false
     end
   end
 
+
+  # Check to see line item quantity is grater than 1 and discounts are avalible.
   def discount_applied
     if variant && quantity > 1 && self.discounts_are_available
       true
@@ -17,6 +20,7 @@ Spree::LineItem.class_eval do
     end
   end
 
+
   def pre_discount_price
     currency_price = Spree::Price.where(
       currency: order.currency,
@@ -24,6 +28,7 @@ Spree::LineItem.class_eval do
     ).first
     pre_discount_price = currency_price.price_including_vat_for(tax_zone: tax_zone)
   end
+
 
   def update_price
     # We only want to change the line item behavior if cart items are in bulk (greater than 1)
@@ -40,6 +45,7 @@ Spree::LineItem.class_eval do
       self.price = currency_price.price_including_vat_for(tax_zone: tax_zone)
     end
   end
+
 
   define_method(:copy_price) do
 
@@ -69,8 +75,9 @@ Spree::LineItem.class_eval do
 
   end
 
+
   def more_discounts_available
-      if self.discounts_are_available && (self.variant.volume_price(1000000, self.order.user, self.currency)) == self.price
+      if self.discounts_are_available && (self.variant.volume_price((self.quantity + 1), self.order.user, self.currency)) == self.price
         false
       else
         true

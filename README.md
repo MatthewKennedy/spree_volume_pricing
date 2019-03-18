@@ -8,6 +8,14 @@ This fork of the spree_volume_pricing extension adds multiple currency support b
 ## Issues
 1. Setting volume discounts by per user role basis does not work.
 
+1. For the system to work correctly, the discounts must flow and be open-ended.
+
+Example 1, a buy 2 and save you would need to use 2+ in the range setting implying that if the customer bought 3 of this item they would still receive the bulk discount, (buy 2 or more).
+
+Example 2, If the sales were stepped: buy two at price X, buy three at price Y or buy 4 or more at price Z.
+
+you would use the ranges (1...3) price is X, (2...4) price is Y, and then (4+) price is Z.
+
 
 ## Original Gem Information
 Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
