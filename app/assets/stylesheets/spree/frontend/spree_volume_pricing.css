@@ -1,3 +1,26 @@
-/*
- *= require spree/frontend
-*/
+.strikethrough {
+  position: relative;
+  font-size: 0.8em
+}
+.strikethrough:before {
+  color: red;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: red;
+
+  -webkit-transform:rotate(-10deg);
+  -moz-transform:rotate(-10deg);
+  -ms-transform:rotate(-10deg);
+  -o-transform:rotate(-10deg);
+  transform:rotate(-10deg);
+}
+
+.micro {
+  font-size: 75%;
+  margin: 0;
+  padding: 0;
+}
