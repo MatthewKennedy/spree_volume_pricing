@@ -7,7 +7,7 @@
       	<%= content_tag(:tr) do %>
         	<%= content_tag :td, v.name %>
         	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' each' %>
-        	<%= content_tag(:td, 'Save ' + ' ' +((1.0 - v.amount / display_price_decimal) * 100.0).floor.to_s + '%') %>
+        	<%= content_tag(:td, 'Save ' + ' ' +((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%') %>
         <% end %>
     	<% end %>
     </table>
