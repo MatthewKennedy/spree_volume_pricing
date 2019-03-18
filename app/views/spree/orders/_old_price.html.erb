@@ -1,0 +1,5 @@
+<% if line_item.discount_applied %>
+  <span class="strikethrough">
+    <%= Spree::Money.new(line_item.pre_discount_price , currency: @order.currency).to_s %>
+  </span>
+<% end %>

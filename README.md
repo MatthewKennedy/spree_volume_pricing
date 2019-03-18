@@ -9,6 +9,7 @@ This fork of the spree_volume_pricing extension adds multiple currency support b
 1. Setting volume discounts by per user role basis does not work.
 
 1. For the volume discounts extension to work correctly, it is always best to set the discounts to taper down and finish open-ended for example:
+
 GOOD EXAMPLE: Buy 2 save X (1...3); Buy 3 save Y (2...4), Buy 4 or more save Z (4+).
 
 BAD - GAP IN DISCOUNT: Buy 2 save X (1...3), Buy 3 (No discount), Buy 4 or more save Z (4+).

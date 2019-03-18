@@ -1,0 +1,16 @@
+<div class="micro">
+  <% if line_item.discounts_are_available && !(line_item.discount_applied) %>
+  <span class="tip" data-tippy="Bulk purchase discounts are available for this product, increase the quantity of this item and then click the update button to see the reduced price.">
+  Discount Available <i class="fal fa-tags"></i></span>
+  <% end %>
+
+  <% if (line_item.quantity > 1) && line_item.discounts_are_available && !(line_item.max_discount) %>
+  <span class="tip" data-tippy="Further bulk purchase discounts are available for this item, <%= line_item.lowest_price %> increase the quantity of this item and then click the update button to see the reduced price.">
+  More Discount Available <i class="fal fa-tags"></i></span>
+  <% end %>
+
+ <% if (line_item.max_discount) && (line_item.discount_applied) %>
+ <span class="tip" data-tippy="You have reached the maximum available bulk purchase discount for this item.">
+   Maximum Discount</span> <i style="color:green;" class="fal fa-check-circle"></i>
+<% end %>
+</div>

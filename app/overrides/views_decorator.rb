@@ -11,3 +11,17 @@ Deface::Override.new(
   insert_after: '[data-hook="admin_variant_edit_form"]',
   partial: 'spree/admin/variants/edit_fields'
 )
+
+Deface::Override.new(
+  virtual_path: 'spree/orders/_line_item',
+  name: 'add_old_price_to_line_item',
+  insert_top: '[data-hook="cart_item_price"]',
+  partial: 'spree/orders/old_price'
+)
+
+Deface::Override.new(
+  virtual_path: 'spree/orders/_line_item',
+  name: 'add_discount_state_to_line_item',
+  insert_bottom: '[data-hook="cart_item_price"]',
+  partial: 'spree/orders/discount_state'
+)
