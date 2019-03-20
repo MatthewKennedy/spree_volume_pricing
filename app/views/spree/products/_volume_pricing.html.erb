@@ -4,10 +4,11 @@
       <% avalable_v_discounts = [] %>
       <% product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
     	<% avalable_v_discounts.each do |v| %>
+        <% next if v.range == '0...2' %>
       	<%= content_tag(:tr) do %>
         	<%= content_tag :td, v.name %>
         	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' ' +Spree.t(:each) %>
-        	<%= content_tag(:td, Spree.t(:save) + ' ' + ((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%') %>
+        	<%#= content_tag(:td, Spree.t(:save) + ' ' + ((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%') %>
         <% end %>
     	<% end %>
     </table>

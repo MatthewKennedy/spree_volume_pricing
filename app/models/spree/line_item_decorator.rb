@@ -55,8 +55,6 @@ Spree::LineItem.class_eval do
 #### UTILTIY METHODS END #######
 
 
-
-
   def update_price
       copy_price
   end
@@ -81,6 +79,5 @@ Spree::LineItem.class_eval do
         self.price = self.pre_discount_price
       end
   end
-
 
 end

@@ -1,6 +1,5 @@
 .strikethrough {
   position: relative;
-  font-size: 12px;
   color: black;
 }
 .strikethrough:before {
