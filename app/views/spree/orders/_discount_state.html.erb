@@ -1,16 +1,11 @@
 <div class="micro">
-  <% if line_item.discounts_are_available && !(line_item.discount_applied) %>
-  <span class="tip" data-tippy="<%= Spree.t(:avalable_for) %> <%= Spree::Money.new(line_item.lowest_price, currency: current_currency).to_s %> <%= Spree.t(:each_continued) %>">
-  From <%= Spree::Money.new(line_item.lowest_price, currency: current_currency).to_s %> <i class="fal fa-tags"></i></span>
+  <% if line_item.discounts_are_available && !(line_item.max_discount_reached) %>
+  <span class="tip" data-tippy="<%= Spree.t(:avalable_for) %> <%= Spree::Money.new(line_item.lowest_volume_price, currency: current_currency).to_s %> <%= Spree.t(:each_continued) %>">
+  From <%= Spree::Money.new(line_item.lowest_volume_price, currency: current_currency).to_s %> <i class="fal fa-tags"></i></span>
   <% end %>
 
-  <% if (line_item.quantity > 1) && line_item.discounts_are_available && !(line_item.max_discount) %>
-  <span class="tip" data-tippy="<%= Spree.t(:avalable_for) %> <%= Spree::Money.new(line_item.lowest_price, currency: current_currency).to_s %> <%= Spree.t(:each_continued) %>">
-  From <%= Spree::Money.new(line_item.lowest_price, currency: current_currency).to_s %> <i class="fal fa-tags"></i></span>
-  <% end %>
-
-  <% if (line_item.max_discount) && (line_item.discount_applied) %>
-  <span class="tip" data-tippy="<%= Spree.t(:you_have_reached_maximum) %> <%= Spree::Money.new(((line_item.pre_discount_price * line_item.quantity) - (line_item.lowest_price  * line_item.quantity)), currency: current_currency).to_s %>">
+  <% if (line_item.max_discount_reached) && (line_item.discounts_are_applied) %>
+  <span class="tip" data-tippy="<%= Spree.t(:you_have_reached_maximum) %> <%= Spree::Money.new(((line_item.pre_discount_price * line_item.quantity) - (line_item.lowest_volume_price  * line_item.quantity)), currency: current_currency).to_s %>">
   Maximum Discount</span> <i style="color:green;" class="fal fa-check-circle"></i>
   <% end %>
 </div>
