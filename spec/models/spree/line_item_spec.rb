@@ -11,7 +11,7 @@ RSpec.describe Spree::LineItem, type: :model do
   it 'updates the line item price when the quantity changes to match a range and has no role' do
     expect(@line_item.price.to_f).to be(10.00)
     @order.contents.add(@variant, 1)
-    expect(@order.line_items.first.price.to_f).to be(9.00)
+    expect(@order.line_items.first.price).to be(9.00)
   end
 
   it 'updates the line item price when the quantity changes to match a range and role matches' do
@@ -21,7 +21,7 @@ RSpec.describe Spree::LineItem, type: :model do
     @variant.volume_prices.first.update(role_id: @role.id)
     expect(@line_item.price.to_f).to eq(10.00)
     @order.contents.add(@variant, 1)
-    expect(@order.line_items.first.price.to_f).to eq(9.00)
+    expect(@order.line_items.first.price).to eq(9.00)
   end
 
   it 'does not update the line item price when the variant role and order role don`t match' do
@@ -29,6 +29,6 @@ RSpec.describe Spree::LineItem, type: :model do
     @variant.volume_prices.first.update(role_id: @role.id)
     expect(@line_item.price.to_f).to be(10.00)
     @order.contents.add(@variant, 1)
-    expect(@order.line_items.first.price.to_f).to be(10.00)
+    expect(@order.line_items.first.price).to be(10.00)
   end
 end
