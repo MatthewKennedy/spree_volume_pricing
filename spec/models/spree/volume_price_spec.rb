@@ -3,7 +3,7 @@ RSpec.describe Spree::VolumePrice, type: :model do
   it { is_expected.to belong_to(:volume_price_model).touch(true) }
   it { is_expected.to belong_to(:spree_role).class_name('Spree::Role').with_foreign_key('role_id') }
   it { is_expected.to validate_presence_of(:discount_type) }
-  it { is_expected.to validate_inclusion_of(:discount_type).in_array(['price', 'dollar', 'percent']) }
+  it { is_expected.to validate_inclusion_of(:discount_type).in_array(['price']) }
   it { is_expected.to validate_presence_of(:amount) }
 
   before do

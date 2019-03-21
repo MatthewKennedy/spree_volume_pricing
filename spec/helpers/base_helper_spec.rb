@@ -4,7 +4,7 @@ RSpec.describe Spree::BaseHelper, type: :helper do
   context 'volume pricing' do
     before do
       @variant = create :variant, price: 10
-      @variant.volume_prices.create! amount: 5, discount_type: 'price', range: '(10+)'
+      @variant.volume_prices.create! amount: 5, discount_type: 'price', currency: 'USD',  range: '(10+)'
     end
 
     it 'gives discounted price' do
