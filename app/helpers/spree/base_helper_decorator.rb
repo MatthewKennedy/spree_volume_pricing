@@ -3,7 +3,7 @@ Spree::BaseHelper.class_eval do
   def display_volume_price(variant, quantity = 1, user = nil)
     Spree::Money.new(
       variant.volume_price(quantity, user),
-      currency: Spree::Config[:currency]
+      currency: current_currency
     ).to_html
   end
 
@@ -17,5 +17,5 @@ Spree::BaseHelper.class_eval do
       currency: Spree::Config[:currency]
     ).to_html
   end
-  
+
 end
