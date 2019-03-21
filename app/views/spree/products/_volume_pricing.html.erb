@@ -4,7 +4,7 @@
       <% avalable_v_discounts = [] %>
       <% product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
     	<% avalable_v_discounts.each do |v| %>
-        <% next if v.range == '0...2' %>
+        <% next if v.range == '1+' || v.range == '1...2' %>
       	<%= content_tag(:tr) do %>
         	<%= content_tag :td, v.name %>
         	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' ' +Spree.t(:each) %>
