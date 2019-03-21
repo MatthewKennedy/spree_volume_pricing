@@ -7,7 +7,7 @@ RSpec.describe Spree::VolumePrice, type: :model do
   it { is_expected.to validate_presence_of(:amount) }
 
   before do
-    @volume_price = Spree::VolumePrice.new(variant: Spree::Variant.new, amount: 10, discount_type: 'price')
+    @volume_price = Spree::VolumePrice.new(variant: Spree::Variant.new, amount: 10, discount_type: 'price', currency: 'USD')
   end
 
   ['1..2', '(1..2)'].each do |range|
