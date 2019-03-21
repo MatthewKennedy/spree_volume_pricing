@@ -1,9 +1,9 @@
 RSpec.describe Spree::Order, type: :model do
   before do
     @order = create(:order)
-    @variant = create(:variant, price: 10)
+    @variant = create(:variant, price: 10, currency: 'USD')
 
-    @variant_with_prices = create(:variant, price: 10)
+    @variant_with_prices = create(:variant, price: 10, currency: 'USD')
     @variant_with_prices.volume_prices << create(:volume_price, range: '1..5', amount: 9, currency: 'USD', position: 2)
     @variant_with_prices.volume_prices << create(:volume_price, range: '(5..9)', amount: 8, currency: 'USD',  position: 1)
   end
