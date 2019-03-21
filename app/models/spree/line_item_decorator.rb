@@ -62,7 +62,6 @@ Spree::LineItem.class_eval do
   define_method(:copy_price) do
       # We only want to change the line item behavior if discounts are available in the order currency
       if self.discounts_are_applied
-
         if changed? && (changes.keys.include?('quantity') || changes.keys.include?('currency'))
           vprice = self.current_volume_price
           if self.price.present? && vprice <= self.variant.price
@@ -71,7 +70,7 @@ Spree::LineItem.class_eval do
         end
 
         if self.price.nil?
-          self.price
+          self.price = self.pre_discount_price
         end
 
       # Else we fallback to the default multiple currency behavior.
