@@ -9,6 +9,7 @@ RSpec.describe Spree::Order, type: :model do
   end
 
   context 'add_variant' do
+    
     it 'uses the variant price if there are no volume prices' do
       @order.contents.add(@variant)
       expect(@order.line_items.first.price).to eq(10)
