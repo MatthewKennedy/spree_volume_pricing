@@ -1,13 +1,14 @@
 class Spree::VolumePrice < Spree::Base
 
-  belongs_to :variant, touch: true, required: true
+  belongs_to :variant, touch: true, required: false
+  belongs_to :volume_price_model, touch: true, required: false
   belongs_to :spree_role, class_name: 'Spree::Role', foreign_key: 'role_id', required: false
 
   acts_as_list scope: [:variant_id, :volume_price_model_id]
 
   validates :amount, presence: true
   validates :currency, presence: true
-  
+
   validates :discount_type,
             presence: true,
             inclusion: {

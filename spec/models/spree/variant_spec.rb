@@ -38,12 +38,6 @@ RSpec.describe Spree::Variant, type: :model do
         expect(@variant.volume_price(10, @user).to_f).to be(9.00)
       end
 
-      it 'uses the volume price when it does match from a volume price model' do
-        @variant.volume_price_models << create(:volume_price_model)
-        @variant.volume_price_models.first.volume_prices.create!(amount: 5, discount_type: 'price', currency: 'USD', range: '(5+)')
-        expect(@variant.volume_price(6).to_f).to be(5.00)
-      end
-
       it 'gives percent of earning without role' do
         expect(@variant.volume_price_earning_percent(10)).to be(10)
       end
