@@ -17,6 +17,7 @@ RSpec.describe Spree::Admin::VariantsController, type: :controller do
                         'range' => '5..10',
                         'amount' => '90',
                         'position' => '1',
+                        'currency' => 'USD',
                         '_destroy' => 'false'
                       }
                     }
