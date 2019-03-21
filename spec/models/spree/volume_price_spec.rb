@@ -1,10 +1,9 @@
 RSpec.describe Spree::VolumePrice, type: :model do
   it { is_expected.to belong_to(:variant).touch(true) }
-  it { is_expected.to belong_to(:volume_price_model).touch(true) }
-  it { is_expected.to belong_to(:spree_role).class_name('Spree::Role').with_foreign_key('role_id') }
   it { is_expected.to validate_presence_of(:discount_type) }
   it { is_expected.to validate_inclusion_of(:discount_type).in_array(['price']) }
   it { is_expected.to validate_presence_of(:amount) }
+  it { is_expected.to validate_presence_of(:currency) }
 
   before do
     @volume_price = Spree::VolumePrice.new(variant: Spree::Variant.new, amount: 10, discount_type: 'price', currency: 'USD')

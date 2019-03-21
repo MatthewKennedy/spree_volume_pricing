@@ -38,59 +38,6 @@ RSpec.describe Spree::Variant, type: :model do
         expect(@variant.volume_price(10, @user).to_f).to be(9.00)
       end
 
-      it 'gives percent of earning without role' do
-        expect(@variant.volume_price_earning_percent(10)).to be(10)
-      end
-
-      it 'gives percent of earning if role matches' do
-        @user.spree_roles << @role
-        Spree::Config.volume_pricing_role = @role.name
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_percent(10, @user)).to be(10)
-      end
-
-      it 'gives zero percent earning if doesnt match' do
-        expect(@variant.volume_price_earning_percent(1)).to be(0)
-      end
-
-      it 'gives zero percent earning if role doesnt match with null' do
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_percent(10)).to be(0)
-      end
-
-      it 'gives zero percent earning if role doesnt match' do
-        other_role = create(:role)
-        @user.spree_roles << other_role
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_percent(10, @user)).to be(0)
-      end
-
-      it 'gives amount earning without role' do
-        expect(@variant.volume_price_earning_amount(10)).to eq(1)
-      end
-
-      it 'gives amount earning if role matches' do
-        @user.spree_roles << @role
-        Spree::Config.volume_pricing_role = @role.name
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_amount(10, @user)).to eq(1)
-      end
-
-      it 'gives zero earning amount if doesnt match' do
-        expect(@variant.volume_price_earning_amount(1)).to eq(0)
-      end
-
-      it 'gives zero earning amount if role doesnt match with null' do
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_amount(10)).to be(0)
-      end
-
-      it 'gives zero earning amount if role doesnt match' do
-        other_role = create(:role)
-        @user.spree_roles << other_role
-        @variant.volume_prices.first.update(role_id: @role.id)
-        expect(@variant.volume_price_earning_amount(10, @user)).to be(0)
-      end
     end
   end
 end
