@@ -52,4 +52,8 @@ Spree::Variant.class_eval do
       end
     end
 
+    def compute_volume_price volume_price
+        return volume_price.amount
+    end
+
 end
