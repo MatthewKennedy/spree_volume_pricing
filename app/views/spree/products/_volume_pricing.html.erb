@@ -1,5 +1,4 @@
-
-<% if product.price > 0 and product.master.volume_prices.present? %>
+<% if product.price > 0 and product.master.volume_prices.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale')%>
   <div id="bulk-discount">
     <table class="table">
       <% avalable_v_discounts = [] %>

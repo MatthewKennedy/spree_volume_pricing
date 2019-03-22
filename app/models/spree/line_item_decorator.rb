@@ -17,13 +17,14 @@ Spree::LineItem.class_eval do
   end
 
   # Fetch the highest available volume discount price in the current currency, (if nill, no volume discounts are available.)
+
   def highest_volume_price
-   self.product.master.volume_prices.where(:currency => order.currency).maximum(:amount)
+    self.product.master.volume_prices.where(:currency => order.currency).maximum(:amount)
   end
 
   # Fetch the lowest available volume discount price in the current currency, (if nill, no volume discounts are available.)
   def lowest_volume_price
-    self.product.master.volume_prices.where(:currency => order.currency).minimum(:amount)
+      self.product.master.volume_prices.where(:currency => order.currency, :role_id => nil).minimum(:amount)
   end
 
   # Check to see if any volume discounts are available in this currency.
