@@ -1,0 +1,12 @@
+<!-- Use this code snippet in views/spree/products/_cart_form.html.erb to replace product price with dynamix price for items on sale.-->
+<% if @product_on_sale %>
+  <span class=" micro"> <%= Spree.t(:was) %> </span>
+  <span class=" strikethrough"> <%= display_price(@product) %></span>
+  <span class="lead price selling"><%= Spree::Money.new(@product_sale_price, currency: current_currency).to_s  %></span>
+  <span><%= current_currency %></span>
+<% else %>
+  <span class="lead price selling">
+    <%= display_price(@product) %>
+  </span>
+  <span><%= current_currency %></span>
+<% end %>

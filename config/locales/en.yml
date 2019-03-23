@@ -11,6 +11,8 @@ en:
     percent_discount: Percent Discount
     bulk_discount: Bulk Discount
     each: each
+    qty: Qty
+    price_per_item: Price/item
     avalable_for: This product is available for just
     each_continued: each. Increase the quantity of this item, and then click 'Update' below to see how much you can save.
     you_have_reached_maximum: You have reached the maximum available discount for this item saving you a total of

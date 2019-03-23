@@ -24,3 +24,10 @@
   margin: 0;
   padding: 0;
 }
+#bulk-discount {
+  padding: 10px 0;
+}
+
+#bulk-discount table{
+  width: 100%;
+}

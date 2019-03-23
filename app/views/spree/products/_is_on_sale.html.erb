@@ -1,0 +1,21 @@
+<!-- Add to the top of views/products/show.html.erb -->
+<% @product_on_sale = false %>
+<% @product_sale_price %>
+<% discs = [] %>
+
+<% if !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
+  <% @product.master.volume_prices.each { |discount| discs << discount if discount.currency == current_currency } %>
+  <% discs.each do |discs| %>
+
+    <% if discs.range.include? ?+ %>
+      <% if discs.range == '1+' %>
+        <% @product_on_sale = true %> <% @product_sale_price = discs.amount %>
+      <% end %>
+    <% else %>
+      <% if discs.range.to_range.include? 1 %>
+        <% @product_on_sale = true %> <% @product_sale_price = discs.amount %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>

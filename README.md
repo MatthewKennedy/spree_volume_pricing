@@ -46,7 +46,9 @@ Each VolumePrice contains the following values:
 
 ## Partials for use in Product view files
   ```ruby
+  <%= render partial: 'spree/products/is_on_sale', locals: { product: @product } %>
   <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
+  
   ```
 
 ---

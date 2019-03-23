@@ -1,19 +1,31 @@
-<% if product.price > 0 and product.master.volume_prices.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
+<!-- Adds Volume Pricing table to products page -->
+<% if @product.price > 0 and @product.master.volume_prices.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
   <div id="bulk-discount">
     <table class="table">
+      <thead>
+        <tr style="background-color: #f1f1f1;">
+          <th class="text-left"><%= Spree.t(:qty) %></th>
+          <th class="text-center"><%= Spree.t(:price_per_item) %></th>
+        </tr>
+      </thead>
       <% avalable_v_discounts = [] %>
-      <% product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
+      <% @product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
     	<% avalable_v_discounts.each do |v| %>
+
+        <!-- Skips if Buy 1 discount is present, allowing it to be presented as an on sale item, rather tha n a bulk purchase. -->
         <% if v.range.include? ?+ %>
           <% next if v.range == '1+' %>
         <% else %>
           <% next if v.range.to_range.include? 1 %>
         <% end %>
+
+        <!-- Skips if role has ID, so that wholesale prices are not shown to all custoemrs. -->
         <% next if v.role_id.present? %>
 
       	<%= content_tag(:tr) do %>
         	<%= content_tag :td, v.name %>
-        	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' ' +Spree.t(:each) %>
+        	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' ' + Spree.t(:each) %>
+          <!-- Uncomment by removing the # below to add percent saving -->
         	<%#= content_tag(:td, Spree.t(:save) + ' ' + ((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%') %>
         <% end %>
     	<% end %>
