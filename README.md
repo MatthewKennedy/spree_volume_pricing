@@ -44,6 +44,7 @@ Each VolumePrice contains the following values:
   If your server was running, restart it so that it can find the assets properly.
 
 
+## Partials for use in Product view files
   ```ruby
   <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
   ```
