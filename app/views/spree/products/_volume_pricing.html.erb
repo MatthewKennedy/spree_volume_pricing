@@ -4,7 +4,11 @@
       <% avalable_v_discounts = [] %>
       <% product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
     	<% avalable_v_discounts.each do |v| %>
-        <% next if v.range == '1+' || v.range == '1...2' %>
+        <% if v.range.include? ?+ %>
+          <% next if v.range == '1+' %>
+        <% else %>
+          <% next if v.range.to_range.include? 1 %>
+        <% end %>
         <% next if v.role_id.present? %>
 
       	<%= content_tag(:tr) do %>
