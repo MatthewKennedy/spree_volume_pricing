@@ -19,4 +19,4 @@ en:
       messages:
         could_not_conver_to_range: "Couldn't convert to Range: %{number}"
         is_not_included_in_the_list: 'is not included in the list'
-        must_be_in_format: 'must be in one of the following formats: (a..b), (a...b), (a+)'
+        must_be_in_format: 'must be in one of the following formats: (a...b) or (a+)'

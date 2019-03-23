@@ -16,7 +16,7 @@ class Spree::VolumePrice < Spree::Base
             }
   validates :range,
             format: {
-              with: /\(?[0-9]+(?:\.{2,3}[0-9]+|\+\)?)/,
+              with: /\(?[0-9]+(?:\.{3}[0-9]+|\+\)?)/,
               message: I18n.t(:'activerecord.errors.messages.must_be_in_format')
             }
 

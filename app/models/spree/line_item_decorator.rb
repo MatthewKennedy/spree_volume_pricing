@@ -8,7 +8,7 @@ Spree::LineItem.class_eval do
       currency: order.currency,
       variant_id: variant_id
     ).first
-    pre_discount_price = currency_price.price_including_vat_for(tax_zone: tax_zone)
+    currency_price.price_including_vat_for(tax_zone: tax_zone)
   end
 
   # The current volume price in the current order currency
@@ -54,7 +54,6 @@ Spree::LineItem.class_eval do
     end
   end
 #### UTILTIY METHODS END #######
-
 
   def update_price
       copy_price

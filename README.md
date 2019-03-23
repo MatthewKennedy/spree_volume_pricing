@@ -1,19 +1,8 @@
 # Spree Volume Pricing With Multiple Currency Support
 
-[![Build Status](https://travis-ci.org/spree-contrib/spree_volume_pricing.svg?branch=3-0-stable)](https://travis-ci.org/spree-contrib/spree_volume_pricing)
-[![Code Climate](https://codeclimate.com/github/spree-contrib/spree_volume_pricing/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_volume_pricing)
+[![Build Status](https://travis-ci.org/matthewkennedy/spree_volume_pricing.svg)](https://travis-ci.org/MatthewKennedy/spree_volume_pricing)
 
 This fork of the spree_volume_pricing extension adds multiple currency support by reducing the complexity of having 3 different discount types, this allows the user to create price based tables on quantities in different currencies.
-
-## Note
-1. For the volume discounts extension to work correctly, it is always best to set the discounts to taper down and finish open-ended for example:
-
-GOOD EXAMPLE: Buy 2 save X (1...3); Buy 3 save Y (2...4), Buy 4 or more save Z (4+).
-
-BAD - GAP IN DISCOUNT: Buy 2 save X (1...3), Buy 3 (No discount), Buy 4 or more save Z (4+).
-
-BAD - NOT OPEN ENDED: Buy 2 save X (1...3), Buy 3 save Y (2...4), Buy 4  save Z (3...5).
-
 
 ## Original Gem Information
 Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
@@ -76,7 +65,7 @@ Consider the following examples of volume prices:
 
        Variant                Name               Range        Amount         Position
        -------------------------------------------------------------------------------
-       Rails T-Shirt          1-5                (1..5)       19.99          1
+       Rails T-Shirt          1-5                (1...6)       19.99          1
        Rails T-Shirt          6-9                (6...10)     18.99          2
        Rails T-Shirt          10 or more         (10+)        17.99          3
 
