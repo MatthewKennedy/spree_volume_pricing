@@ -1,11 +1,11 @@
 # Spree Volume Pricing With Multiple Currency Support
 
-[![Build Status](https://travis-ci.org/matthewkennedy/spree_volume_pricing.svg)](https://travis-ci.org/MatthewKennedy/spree_volume_pricing)
+[![Build Status](https://travis-ci.org/MatthewKennedy/spree_volume_pricing.svg?branch=master)](https://travis-ci.org/MatthewKennedy/spree_volume_pricing)
 
-This fork of the spree_volume_pricing extension adds multiple currency support by reducing the complexity of having 3 different discount types, this allows the user to create price based tables on quantities in different currencies.
+Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant. For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
 
-## Original Gem Information
-Volume Pricing is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that uses predefined ranges of quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for quantities between 1-10, another price for quantities between (10-100) and another for quantities of 100 or more.  If no volume price is defined for a variant, then the standard price is used.
+## Multiple Currency Support
+This fork of the spree_volume_pricing extension adds multiple currency support by reducing the complexity of having three different discount types. This version of the extension only lets the user create `price based` tables for different quantities in different currencies.
 
 Each VolumePrice contains the following values:
 
@@ -13,8 +13,9 @@ Each VolumePrice contains the following values:
 1. **Name:** The human readable representation of the quantity range (Ex. 10-100).  (Optional)
 1. **Range:** The quantity range for which the price is valid (See Below for Examples of Valid Ranges.)
 1. **Amount:** The price of the product if the line item quantity falls within the specified range.
-1. **Currency:** The store current currency that the line item falls within.
 1. **Position:** Integer value for `acts_as_list` (Helps keep the volume prices in a defined order.)
+1. **Currency:** The store current currency that the line item falls within.
+1. **Role:** Use `None` for the discount to apply to all customers, or `wholesale` for wholesale only users.
 
 ---
 
@@ -51,9 +52,9 @@ Each VolumePrice contains the following values:
 
 ## Ranges
 
-Ranges are expressed as Strings and are similar to the format of a Range object in Ruby.  The lower number of the range is always inclusive.  If the range is defined with '..' then it also includes the upper end of the range.  If the range is defined with '...' then the upper end of the range is not inclusive.
+Ranges are expressed as Strings and are similar to the format of a Range object in Ruby. The lower number of the range is always inclusive. In this extension a range is defined with '...' then the upper end of the range is not inclusive.
 
-Ranges can also be defined as "open ended."  Open ended ranges are defined with an integer followed by a '+' character.  These ranges are inclusive of the integer and any value higher then the integer.
+Ranges can also be defined as "open ended."  Open ended ranges are defined with an integer followed by a '+' character. These ranges are inclusive of the integer and any value higher then the integer.
 
 All ranges need to be expressed as Strings and can include or exclude parentheses.  "(1..10)" and "1..10" are considered to be a valid range.
 
