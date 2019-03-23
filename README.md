@@ -52,9 +52,9 @@ Each VolumePrice contains the following values:
 
 ## Ranges
 
-Ranges are expressed as Strings and are similar to the format of a Range object in Ruby. The lower number of the range is always inclusive. In this extension a range is defined with '...' then the upper end of the range is not inclusive.
+Ranges are expressed as Strings and are similar to the format of a Range object in Ruby.  The lower number of the range is always inclusive.  If the range is defined with '..' then it also includes the upper end of the range.  If the range is defined with '...' then the upper end of the range is not inclusive.
 
-Ranges can also be defined as "open ended."  Open ended ranges are defined with an integer followed by a '+' character. These ranges are inclusive of the integer and any value higher then the integer.
+Ranges can also be defined as "open ended."  Open ended ranges are defined with an integer followed by a '+' character.  These ranges are inclusive of the integer and any value higher then the integer.
 
 All ranges need to be expressed as Strings and can include or exclude parentheses.  "(1..10)" and "1..10" are considered to be a valid range.
 
@@ -66,7 +66,7 @@ Consider the following examples of volume prices:
 
        Variant                Name               Range        Amount         Position
        -------------------------------------------------------------------------------
-       Rails T-Shirt          1-5                (1...6)       19.99          1
+       Rails T-Shirt          1-5                (1..5)       19.99          1
        Rails T-Shirt          6-9                (6...10)     18.99          2
        Rails T-Shirt          10 or more         (10+)        17.99          3
 
