@@ -1,5 +1,5 @@
 <!-- Adds Volume Pricing table to products page -->
-<% if @product.price > 0 and @product.master.volume_prices.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
+<% if @product.price > 0 and @avalable_v_discounts.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
   <div id="bulk-discount">
     <table class="table">
       <thead>
@@ -8,9 +8,8 @@
           <th class="text-center"><%= Spree.t(:price_per_item) %></th>
         </tr>
       </thead>
-      <% avalable_v_discounts = [] %>
-      <% @product.master.volume_prices.each { |discount| avalable_v_discounts << discount if discount.currency == current_currency } %>
-    	<% avalable_v_discounts.each do |v| %>
+
+    	<% @avalable_v_discounts.each do |v| %>
 
         <!-- Skips if Buy 1 discount is present, allowing it to be presented as an on sale item, rather tha n a bulk purchase. -->
         <% if v.range.include? ?+ %>

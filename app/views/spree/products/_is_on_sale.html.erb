@@ -1,4 +1,7 @@
 <!-- Add to the top of views/products/show.html.erb -->
+<% @avalable_v_discounts = [] %>
+<% @product.master.volume_prices.each { |discount| @avalable_v_discounts << discount if discount.currency == current_currency } %>
+
 <% @product_on_sale = false %>
 <% @product_sale_price %>
 <% discs = [] %>
