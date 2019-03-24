@@ -2,6 +2,17 @@
 Spree::LineItem.class_eval do
 
 #### UTILTIY METHODS START #######
+
+  # Fetch the highest available volume discount price in the current currency, (if nill, no volume discounts are available.)
+  def highest_volume_price
+    self.product.master.volume_prices.where(:currency => order.currency).maximum(:amount)
+  end
+
+  # Fetch the lowest available volume discount price in the current currency, (if nill, no volume discounts are available.)
+  def lowest_volume_price
+      self.product.master.volume_prices.where(:currency => order.currency, :role_id => nil).minimum(:amount)
+  end
+
   # The default RRP price in the current order currency
   def pre_discount_price
     currency_price = Spree::Price.where(
@@ -14,17 +25,6 @@ Spree::LineItem.class_eval do
   # The current volume price in the current order currency
   def current_volume_price
     self.variant.volume_price(self.pre_discount_price, self.quantity, self.order.user, self.currency)
-  end
-
-  # Fetch the highest available volume discount price in the current currency, (if nill, no volume discounts are available.)
-
-  def highest_volume_price
-    self.product.master.volume_prices.where(:currency => order.currency).maximum(:amount)
-  end
-
-  # Fetch the lowest available volume discount price in the current currency, (if nill, no volume discounts are available.)
-  def lowest_volume_price
-      self.product.master.volume_prices.where(:currency => order.currency, :role_id => nil).minimum(:amount)
   end
 
   # Check to see if any volume discounts are available in this currency.
@@ -64,7 +64,7 @@ Spree::LineItem.class_eval do
       if self.discounts_are_applied
         if changed? && (changes.keys.include?('quantity') || changes.keys.include?('currency'))
           vprice = self.current_volume_price
-          if self.price.present? && vprice <= self.variant.price
+          if self.price.present? && vprice <= self.highest_volume_price
             self.price = vprice and return
           end
         end

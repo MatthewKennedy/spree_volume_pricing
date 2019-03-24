@@ -15,7 +15,7 @@ Spree::Variant.class_eval do
         Spree::VolumePrice.where(
           (table[:variant_id].eq(self.id)
             .or(table[:volume_price_model_id].in(self.volume_price_models.ids)))
-            .and(table[:role_id].eq(user.resolve_role).or(table[:role_id].eq(nil)))
+            .and(table[:role_id].eq(user.resolve_role.try(:id)))
             .and(table[:currency].eq(currency))
           ).order(position: :asc)
       else
