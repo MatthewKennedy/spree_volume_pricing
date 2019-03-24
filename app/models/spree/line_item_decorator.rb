@@ -47,7 +47,7 @@ Spree::LineItem.class_eval do
 
   # Check to see the maximum available discount has been reached
   def max_discount_reached
-    if self.lowest_volume_price != nil && self.lowest_volume_price == self.price
+    if self.discounts_are_available != nil && self.lowest_volume_price == self.price
       true
     else
       false
@@ -55,8 +55,15 @@ Spree::LineItem.class_eval do
   end
 #### UTILTIY METHODS END #######
 
-  def update_price
-      copy_price
+def update_price
+   # currency_price = Spree::Price.where(
+   #   currency: order.currency,
+   #   variant_id: variant_id
+   # ).first
+
+   # self.price = currency_price.price_including_vat_for(tax_zone: tax_zone)
+
+    copy_price
   end
 
   define_method(:copy_price) do
