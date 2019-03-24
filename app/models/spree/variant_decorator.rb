@@ -34,8 +34,29 @@ Spree::Variant.class_eval do
         compute_volume_price_quantities :volume_price, d_price, quantity, user, currency
     end
 
+
+    # calculates the price based on quantity
+    def is_volume_price_true(def_price, quantity, user=nil, currency=nil)
+        is_volume_price :volume_price, def_price, quantity, user, currency
+    end
+
+
     protected
 
+    def is_volume_price type, default_price, quantity, user, currency
+      volume_prices = self.join_volume_prices user, currency
+      if volume_prices.count == 0
+        return false
+      else
+        volume_prices.each do |volume_price|
+          if volume_price.include?(quantity)
+            return true
+          end
+        end
+        # No price ranges matched.
+        return false
+      end
+    end
 
     def compute_volume_price_quantities type, default_price, quantity, user, currency
       volume_prices = self.join_volume_prices user, currency

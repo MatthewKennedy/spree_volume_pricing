@@ -39,6 +39,11 @@ Each VolumePrice contains the following values:
   bundle exec rails g spree_volume_pricing:install
   ```
 
+  4. Add to  ```vendor/assets/stylesheets/spree/frontend/all.css```
+  ```ruby
+  *= require spree/frontend/spree_volume_pricing
+  ```
+
 4. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
@@ -48,7 +53,7 @@ Each VolumePrice contains the following values:
   ```ruby
   <%= render partial: 'spree/products/is_on_sale', locals: { product: @product } %>
   <%= render partial: 'spree/products/volume_pricing', locals: { product: @product } %>
-  
+
   ```
 
 ---
