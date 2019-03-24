@@ -15,7 +15,7 @@ Spree::Variant.class_eval do
         Spree::VolumePrice.where(
           (table[:variant_id].eq(self.id)
             .or(table[:volume_price_model_id].in(self.volume_price_models.ids)))
-            .and(table[:role_id].eq(user.resolve_role.try(:id)))
+            .and(table[:role_id].eq(user.resolve_role).or(table[:role_id].eq(nil)))
             .and(table[:currency].eq(currency))
           ).order(position: :asc)
       else
@@ -30,16 +30,17 @@ Spree::Variant.class_eval do
     end
 
     # calculates the price based on quantity
-    def volume_price(quantity, user=nil, currency=nil)
-        compute_volume_price_quantities :volume_price, self.price, quantity, user, currency
+    def volume_price(d_price, quantity, user=nil, currency=nil)
+        compute_volume_price_quantities :volume_price, d_price, quantity, user, currency
     end
 
     protected
 
+
     def compute_volume_price_quantities type, default_price, quantity, user, currency
       volume_prices = self.join_volume_prices user, currency
       if volume_prices.count == 0
-          self.product.master.send(type, quantity, user)
+          return default_price
       else
         volume_prices.each do |volume_price|
           if volume_price.include?(quantity)

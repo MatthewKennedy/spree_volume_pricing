@@ -13,7 +13,7 @@ Spree::LineItem.class_eval do
 
   # The current volume price in the current order currency
   def current_volume_price
-    self.variant.volume_price(self.quantity, self.order.user, self.currency)
+    self.variant.volume_price(self.pre_discount_price, self.quantity, self.order.user, self.currency)
   end
 
   # Fetch the highest available volume discount price in the current currency, (if nill, no volume discounts are available.)
