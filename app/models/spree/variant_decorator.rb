@@ -36,14 +36,14 @@ Spree::Variant.class_eval do
 
 
     # calculates the price based on quantity
-    def is_volume_price_true(def_price, quantity, user=nil, currency=nil)
-        is_volume_price :volume_price, def_price, quantity, user, currency
+    def is_volume_price_applied(def_price, quantity, user=nil, currency=nil)
+        test_if_volume_price_is_applied :volume_price, def_price, quantity, user, currency
     end
 
 
     protected
 
-    def is_volume_price type, default_price, quantity, user, currency
+    def test_if_volume_price_is_applied type, default_price, quantity, user, currency
       volume_prices = self.join_volume_prices user, currency
       if volume_prices.count == 0
         return false

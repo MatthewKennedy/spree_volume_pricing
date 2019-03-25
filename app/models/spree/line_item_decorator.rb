@@ -2,8 +2,8 @@
 Spree::LineItem.class_eval do
 
 #### UTILTIY METHODS START #######
-  def discounts_are_applied
-    self.variant.is_volume_price_true(self.pre_discount_price, self.quantity, self.order.user, self.currency)
+  def discount_is_applied
+    self.variant.is_volume_price_applied(self.pre_discount_price, self.quantity, self.order.user, self.currency)
   end
   # Fetch the highest available volume discount price in the current currency, (if nill, no volume discounts are available.)
   def highest_volume_price
@@ -49,10 +49,10 @@ Spree::LineItem.class_eval do
 #### UTILTIY METHODS END #######
 
   def update_price
-    if self.discounts_are_applied
-      copy_price
+    if self.discount_is_applied
+        copy_price
       else
-      self.pre_discount_price
+        self.pre_discount_price
     end
   end
 
