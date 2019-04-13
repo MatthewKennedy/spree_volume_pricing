@@ -9,12 +9,12 @@ en:
     volume_pricing: Volume Pricing
     price_discount: Price Discount
     percent_discount: Percent Discount
-    bulk_discount: Bulk Discount
+    bulk_discount: Bulk
     each: each
     from: From
     maximum_discount: Max discount
-    qty: Qty
-    price_per_item: Price/item
+    qty: QTY
+    price_per_item: Price per item
     avalable_for: This item is available for
     each_continued: each. Increase the 'Qty' of this item, and then click 'Update' below to see how much you can save.
     you_have_reached_maximum: You have reached the maximum bulk discount available for this item, saving you a total of

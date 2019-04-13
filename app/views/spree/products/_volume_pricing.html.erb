@@ -1,11 +1,13 @@
 <!-- Adds Volume Pricing table to products page -->
 <% if @product.price > 0 and @avalable_v_discounts.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
   <div id="bulk-discount">
+    <span class="ab"><%= Spree.t(:bulk_discount) %></span> <span class="ae"><%= Spree.t(:saving) %></span>
     <table class="table">
       <thead>
         <tr style="background-color: #f1f1f1;">
-          <th class="text-left"><%= Spree.t(:qty) %></th>
+          <th class="text-center"><%= Spree.t(:qty) %></th>
           <th class="text-center"><%= Spree.t(:price_per_item) %></th>
+          <th class="text-center"><%= Spree.t(:saving) %></th>
         </tr>
       </thead>
 
@@ -22,10 +24,10 @@
         <% next if v.role_id.present? %>
 
       	<%= content_tag(:tr) do %>
-        	<%= content_tag :td, v.name %>
-        	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s + ' ' + Spree.t(:each) %>
+        	<%= content_tag :td, v.name, class: 'text-center' %>
+        	<%= content_tag :td, Spree::Money.new(v.amount, currency: current_currency).to_s, class: 'text-center'  %>
           <!-- Uncomment by removing the # below to add percent saving -->
-        	<%#= content_tag(:td, Spree.t(:save) + ' ' + ((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%') %>
+        	<%= content_tag(:td, ((1.0 - v.amount / (@product.price_in(current_currency).amount.to_f)) * 100.0).floor.to_s + '%', class: 'text-center' ) %>
         <% end %>
     	<% end %>
     </table>
