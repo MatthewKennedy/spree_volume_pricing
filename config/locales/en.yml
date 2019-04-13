@@ -16,7 +16,7 @@ en:
     qty: QTY
     price_per_item: Price per item
     avalable_for: This item is available for
-    each_continued: each. Increase the 'Qty' of this item, and then click 'Update' below to see how much you can save.
+    each_continued: each. Increase the quantity of this item, and then click 'Update' below to see how much you can save.
     you_have_reached_maximum: You have reached the maximum bulk discount available for this item, saving you a total of
   activerecord:
     errors:
