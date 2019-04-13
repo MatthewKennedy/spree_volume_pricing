@@ -36,7 +36,7 @@ Spree::Variant.class_eval do
 
 
     # calculates the price based on quantity
-    def is_volume_price_applied(def_price, quantity, user=nil, currency=nil)
+    def is_volume_price_applied?(def_price, quantity, user=nil, currency=nil)
         test_if_volume_price_is_applied :volume_price, def_price, quantity, user, currency
     end
 

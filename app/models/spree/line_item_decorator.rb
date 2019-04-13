@@ -2,7 +2,7 @@
 Spree::LineItem.class_eval do
 
 #### UTILTIY METHODS START #######
-  def discount_is_applied
+  def discount_is_applied?
     self.variant.is_volume_price_applied?(self.pre_discount_price, self.quantity, self.order.user, self.currency)
   end
 
