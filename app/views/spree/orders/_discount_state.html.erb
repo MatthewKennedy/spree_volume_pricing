@@ -7,7 +7,7 @@
     <% end %>
 
     <% if (line_item.max_discount_reached) && (line_item.discount_is_applied?) %>
-    <span class="tip" data-tippy="<%= Spree.t(:you_have_reached_maximum) %> <%= Spree::Money.new(((line_item.pre_discount_price * line_item.quantity) - (line_item.lowest_volume_price  * line_item.quantity)), currency: current_currency).to_s %>">
+    <span class="tip" data-tippy="<%= Spree.t(:you_have_reached_maximum, name: line_item.name, saving: (Spree::Money.new(((line_item.pre_discount_price * line_item.quantity) - (line_item.lowest_volume_price  * line_item.quantity)), currency: current_currency).to_s)) %>">
     <%= Spree.t(:maximum_discount) %></span> <i style="color:green;" class="fal fa-check-circle"></i>
     <% end %>
   </div>
