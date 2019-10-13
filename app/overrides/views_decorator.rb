@@ -36,6 +36,6 @@ Deface::Override.new(
 Deface::Override.new(
   virtual_path: 'spree/products/_cart_form',
   name: 'add_volume_pricing_to_product_cart_from',
-  insert_bottom: '[data-hook="product_price"]',
+  insert_bottom: '[data-hook="volume_prices_table"]',
   partial: 'spree/products/volume_pricing'
 )

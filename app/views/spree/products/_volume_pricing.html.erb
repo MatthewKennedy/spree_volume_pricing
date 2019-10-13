@@ -1,11 +1,11 @@
 <!-- Adds Volume Pricing table to products page -->
 <% if @product.price > 0 and @avalable_v_discounts.present? && !try_spree_current_user.try(:has_spree_role?, 'wholesale') %>
   <div id="bulk-discount">
-    <span class="ab"><%= Spree.t(:bulk_discount) %></span> <span class="ae"><%= Spree.t(:saving) %></span>
+    <!-- <span class="ab"><%= Spree.t(:bulk_discount) %></span> <span class="ae"><%= Spree.t(:saving) %></span> -->
     <table class="table">
       <thead>
         <tr style="background-color: #f1f1f1;">
-          <th class="text-center"><%= Spree.t(:qty) %></th>
+          <th class="text-center"><%= Spree.t(:buy) %></th>
           <th class="text-center"><%= Spree.t(:price_per_item) %></th>
           <th class="text-center"><%= Spree.t(:saving) %></th>
         </tr>

@@ -1,18 +1,25 @@
 ---
 de:
   spree:
-    add_volume_price: Neuen Staffelpreis
+    add_volume_price: Volumenpreis hinzufügen
     position: Position
-    discount_type:
-    range: Bereich
-    volume_prices: Staffelpreise
-    volume_pricing: Staffelpreis
-    price_discount:
-    percent_discount:
-    bulk_discount:
+    discount_type: Rabattart
+    range: Reichweite
+    volume_prices: Volumenpreise
+    volume_pricing: Mengenrabatt
+    price_discount: Preisnachlass
+    percent_discount: Prozent Rabatt
+    bulk_discount: Bulk
+    each: jeder
+    from: Von
+    maximum_discount: Maximaler Rabatt
+    buy: Kaufen
+    price_per_item: Preis pro Stück
+    avalable_for: <b>%{name}</b> ist verfügbar für nur <b>%{amount}</b> jeder. Erhöhen Sie die Menge dieses Artikels, um mehr zu sparen.
+    you_have_reached_maximum: Sie haben den maximal verfügbaren Mengenrabatt für erreicht <b>%{name}</b>, Sie sparen insgesamt <b>%{saving}</b>.
   activerecord:
     errors:
       messages:
-        could_not_conver_to_range:
-        is_not_a_valid_volume_price_type:
-        must_be_in_format:
+        could_not_conver_to_range: "Couldn't convert to Range: %{number}"
+        is_not_included_in_the_list: 'is not included in the list'
+        must_be_in_format: 'must be in one of the following formats: (a...b) or (a+)'

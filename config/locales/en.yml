@@ -13,7 +13,7 @@ en:
     each: each
     from: From
     maximum_discount: Max discount
-    qty: Qty
+    buy: Buy
     price_per_item: Price per item
     avalable_for: <b>%{name}</b> is available for just <b>%{amount}</b> each. Increase the quantity of this item to save more.
     you_have_reached_maximum: You have reached the maximum bulk discount available for <b>%{name}</b>, saving you a total of <b>%{saving}</b>.

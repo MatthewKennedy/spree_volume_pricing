@@ -1,6 +1,6 @@
 .strikethrough {
   position: relative;
-  color: black;
+  color: #666;
 }
 .strikethrough:before {
   color: red;
@@ -25,9 +25,6 @@
   padding: 0;
 }
 #bulk-discount {
-  margin-top: 10px;
-  background: rgb(50, 125, 205);
-  padding:3px;
   text-align: center;
   width: 100%;
 }
